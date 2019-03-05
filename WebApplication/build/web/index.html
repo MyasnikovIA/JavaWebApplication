@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script language="JavaScript" type="text/javascript" src="/WebApplication/SendServer"></script> 
+        <script language="JavaScript" type="text/javascript" src="/WebApplication/SendServer?include=NewClass"></script> 
+    </head>
+    <body>
+        
+        <pre id="ResQuery" >TODO write content</pre>
+        <script language="JavaScript">
+               var res=document.getElementById("ResQuery"); 
+               res.innerHTML='';
+               res.innerHTML+='\n'+SendServer("NewClass.GetJson","Вариант вызова 1",) ;
+               SendServer("NewClass.GetJson","Вариант вызова 2(Асинхронно)",function(txt){res.innerHTML+='\n'+txt;} ) ;
+               // Для вызова вариантом 3 и 4 необходимо подключить класс как библиотеку  <script language="JavaScript" type="text/javascript" src="/WebApplication/SendServer?include=NewClass"></ script> 
+               res.innerHTML+='\n'+GetJson("Вариант вызова 3") ;
+               GetJson("Вариант вызова 4(Асинхронно)",function(txt){res.innerHTML+='\n'+txt;} ) ;
+               
+               res.innerHTML+='\n'+ SendServer("NewClass.printDog","ПесГраф" , 44); 
+               res.innerHTML+='\n';
+               
+        </script> 
+    </body>
+     
+</html>
