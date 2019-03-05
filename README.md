@@ -27,3 +27,23 @@ public class NewClass {
     }
 }
 </pre>
+
+
+<pre>
+    <script language="JavaScript" type="text/javascript" src="/WebApplication/SendServer"></script> 
+    <script language="JavaScript" type="text/javascript" src="/WebApplication/SendServer?include=NewClass"></script> 
+</pre>
+
+<pre>
+               var res=document.getElementById("ResQuery"); 
+               res.innerHTML='';
+               res.innerHTML+='\n'+SendServer("NewClass.GetJson","Вариант вызова 1",) ;
+               SendServer("NewClass.GetJson","Вариант вызова 2(Асинхронно)",function(txt){res.innerHTML+='\n'+txt;} ) ;
+               // Для вызова вариантом 3 и 4 необходимо подключить класс как библиотеку  <script language="JavaScript" type="text/javascript" src="/WebApplication/SendServer?include=NewClass"></ script> 
+               res.innerHTML+='\n'+GetJson("Вариант вызова 3") ;
+               GetJson("Вариант вызова 4(Асинхронно)",function(txt){res.innerHTML+='\n'+txt;} ) ;
+               
+               res.innerHTML+='\n'+ SendServer("NewClass.printDog","ПесГраф" , 44); 
+               res.innerHTML+='\n';
+
+</pre>
